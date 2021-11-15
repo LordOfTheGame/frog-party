@@ -1,0 +1,115 @@
+html,body{
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+h3 {
+  text-align: left;
+}
+
+
+
+@media screen {
+  
+}
+
+
+
+
+#no-froge{
+  height: 100vh;
+  background-color:azure;
+  background-image: url('./imgs/stump.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+#froge-gif{
+  height: 100vh;
+  background-color:azure;
+  background-image: url('./imgs/stump-anim2.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+#froge-gif, #no-froge{
+  display: flex;
+
+  justify-content: center;
+}
+
+
+
+#buttons-container{
+  min-width: 35%;
+  height: 8%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 1em;
+
+}
+
+.btn{
+  border: none;
+  text-decoration: none;
+  background-color:cadetblue;
+  color: white;
+  font-size: 16px;
+}
+
+.btn:hover{
+  background-color:rgb(66, 112, 114);
+  border:2px solid rgb(8, 73, 73);
+  cursor: pointer;
+}
+
+#popup-container{
+  background-color:rgba(230, 230, 230, 0.5);
+  height: 100vh;
+  width: 100vw;
+  position:fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#popup-message{
+  padding: 15px;
+  border-radius: 2%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-width: 15%;
+}
+
+#credits{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.credit-title{
+  margin: 15px 0 5px 0;
+}
+
+.credit-content{
+  margin: 0;
+  border-bottom: 1px solid black;
+}
+
+.credit-btn{
+  margin-top: 20px;
+}
+
