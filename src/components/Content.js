@@ -4,21 +4,21 @@ import Popup from './Popup';
 import Playsound from './Playsound';
 import Curtains from './Curtains';
 import InitialOverlay from './InitialOverlay';
-import BgImage from './BgImage';
 
 
-//frog gif URLs
-import noFrog from './../imgs/stump.jpg'
-import frog from './../imgs/stump-anim2.gif'
+
 
 
 const Content = ({frogeStatus, soundStatus, popupStatus, 
     changeStatus, changeSound, changePopup,
-     initialToggle, initialLoad}) => {
+     initialToggle, initialLoad,
+    
+    imageObject
+    }) => {
 
 
 
-        
+
 
     return (
         <div id='background'>

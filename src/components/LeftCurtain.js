@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Spring } from 'react-spring';
 import { config, useTransition } from '@react-spring/core';
 import { useSpring, animated } from 'react-spring';
-import curtL from './../imgs/curtL.png'
+
 
 
 const LeftCurtain = ({initialLoad}) => {
