@@ -1,15 +1,40 @@
 import React from 'react'
 import FrogeButton from './FrogeButton'
 import Mutebtn from './Mutebtn'
+import { useSpring, animated } from 'react-spring';
 
 
 const Buttons = ({changeSound, 
     changeStatus, setPopup, soundStatus, 
-    frogeStatus,
+    frogeStatus, 
 
-        initialToggle}) => {
+
+        initialLoad}) => {
+
+            const styles = useSpring({
+                
+                from: {opacity: 0,
+                       top: '-20%'},
+                to: {opacity: initialLoad? 0:1,
+                    top: initialLoad? '-20%' : '0'},
+                
+                config: {duration: 1000},
+                delay: 2300,
+            })
+                    
     return (
-        <div id="buttons-container">
+        <animated.div style={{  minWidth: '35%',
+            height: '8%',
+            marginTop: '20px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr',
+            columnGap: '1em',
+            opacity: 0,
+            position: 'relative',
+            top: '-30%',
+            zIndex: 2,
+            
+            ...styles}}>
 
             
             <button className="btn" onClick={setPopup}>
@@ -19,18 +44,17 @@ const Buttons = ({changeSound,
             <FrogeButton changeStatus = {changeStatus}
             changeSound = {changeSound}
             frogeStatus = {frogeStatus}
-            initialToggle = {initialToggle}
             />
 
             <Mutebtn 
             changeSound = {changeSound} 
             soundStatus = {soundStatus}
-            initialToggle = {initialToggle}
             />
 
+    </animated.div>
 
-        </div>
     )
+
 }
 
 export default Buttons

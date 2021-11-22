@@ -12,10 +12,10 @@ const Popup = ({popupStatus, changePopup}) => {
 
                     <div id="credits">
                     <h3 className="credit-title">Music</h3>
-                    <p className="credit-content">Name of music guy</p>
+                    <a style={{margin: 0}} target="_blank" href="https://open.spotify.com/artist/1Xn3vX2CjfhE2TQFt4wjKX" >Danny Del Collo</a>
                     <br />
                     <h3 className="credit-title">Development</h3>
-                    <p className="credit-content">By Boof</p>
+                    <a href="https://ko-fi.com/boofamel" target="_blank" style={{margin: 0}}>By Boof</a>
                     <br />
                     </div>
 

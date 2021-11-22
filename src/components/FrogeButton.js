@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FrogeButton = ({changeStatus, frogeStatus, initialToggle}) => {
+const FrogeButton = ({changeStatus, frogeStatus}) => {
 
 
 
@@ -8,7 +8,7 @@ const FrogeButton = ({changeStatus, frogeStatus, initialToggle}) => {
 const clicked = () =>{
 
     changeStatus();
-    initialToggle();
+
 
 }
 

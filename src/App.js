@@ -14,13 +14,12 @@ function App(){
 
 // global state
 const [frogeStatus, setStatus] = useState(false);
-const [soundStatus, setSound] = useState(true);
+const [soundStatus, setSound] = useState(false);
 const [popupStatus, setPopup] = useState(false);
 
-const [shouldPlay, togglePlay] = useState(true)
 
 const [initialLoad, toggleInitialLoad] = useState(true);
-const [hoveredOver, setHover] = useState(false);
+
 
 
 
@@ -45,44 +44,17 @@ const changePopup = () =>{
 
 
 
-const hoverSet = () =>{
-  setHover(
-    true
-  )
-  playStatus();
-}
-
 const initialToggle = () =>{
-  toggleInitialLoad(
-    false
-  )
+  toggleInitialLoad(false);
+  setSound(true);
   
 }
-
-
-const playStatus = () =>{  
-
-
-  if(initialLoad){
-    togglePlay(
-      true
-    )
-    console.log('================================ INITIAL LOAD HAS BEEN TURNED ON =======================================')
-  } else {
-    togglePlay(
-      false
-    )
-    console.log('================================ INITIAL LOAD HAS BEEN TURNED OFF =======================================')
-  }
-  
-}
-
-
 
 
 // the render
-return (
 
+
+return (
   <div >
 
     <Content 
@@ -94,19 +66,10 @@ return (
     changePopup={changePopup}
     changeSound={changeSound}
 
-    setHover = {hoverSet} 
     initialToggle = {initialToggle}   
+    initialLoad = {initialLoad}
     
     />
-
-<Sound 
-    url = {forestbgm}
-    autoLoad = {true}
-    playStatus={shouldPlay? Sound.status.PLAYING : Sound.status.STOPPED}
-    playFromPosition = {11000}
-    loop = {true}
-    />
-
   </div>
 )
 

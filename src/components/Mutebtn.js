@@ -1,12 +1,12 @@
 import React from 'react'
 import {GoMute, GoUnmute} from 'react-icons/go'
 
-const Mutebtn = ({soundStatus, changeSound, initialToggle}) => {
+const Mutebtn = ({soundStatus, changeSound}) => {
 
 const clicked = () =>{
 
     changeSound();
-    initialToggle();
+
 
 }
         
