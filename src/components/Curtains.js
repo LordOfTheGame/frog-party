@@ -3,12 +3,12 @@ import LeftCurtain from './LeftCurtain';
 import RightCurtain from './RightCurtain';
 import { useSpring, animated } from 'react-spring';
 
-const Curtains = React.memo(({initialLoad}) => {
+const Curtains = React.memo(({initialLoad, imageObject}) => {
     return (
         <div>
             
-            <LeftCurtain initialLoad = {initialLoad}/>
-            <RightCurtain initialLoad = {initialLoad}/>
+            <LeftCurtain curtL={imageObject.curtL} initialLoad = {initialLoad}/>
+            <RightCurtain curtR = {imageObject.curtR} initialLoad = {initialLoad}/>
 
         </div>
     )

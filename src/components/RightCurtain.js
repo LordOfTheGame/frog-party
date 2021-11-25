@@ -4,7 +4,7 @@ import { config, useTransition } from '@react-spring/core';
 import { useSpring, animated } from 'react-spring';
 
 
-const RightCurtain = ({initialLoad}) => {
+const RightCurtain = ({initialLoad, curtR}) => {
 
 
     const styles = useSpring({

@@ -35,14 +35,27 @@ const [initialLoad, toggleInitialLoad] = useState(true);
 //image loading
 const [imagesLoaded, addImage] = useState(0);
 
+const imageAddition = () =>{
+  console.log("image load fired")
+  if(imagesLoaded < images.length){
+  addImage(imagesLoaded+1)
+}
+}
+
 
 useEffect(()=>{
-  images.forEach((image)=>{
+
     let img = new Image();
-    img.src=image;
-    img.onload=addImage(imagesLoaded+1);
-  })
-})
+    img.src=images[imagesLoaded];
+    console.log(img.src);
+    img.onload=imageAddition();
+    console.log('number of images loaded: ',imagesLoaded);
+    
+
+
+},[imagesLoaded])
+
+
 
 
 // methods
@@ -95,7 +108,7 @@ return (
     imageObject = {imageObject}
 
     />:
-    null}
+    <h1>Images loaded: {imagesLoaded}</h1>}
     
   </div>
 )

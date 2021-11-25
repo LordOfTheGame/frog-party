@@ -5,7 +5,7 @@ import { useSpring, animated } from 'react-spring';
 
 
 
-const LeftCurtain = ({initialLoad}) => {
+const LeftCurtain = ({initialLoad, curtL}) => {
     const styles = useSpring({
         from: {left: '0'},
         to: {left: initialLoad? '0' : '-53%'},

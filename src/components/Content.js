@@ -28,7 +28,7 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
         initialToggle = {initialToggle}
         frogeStatus = {frogeStatus}/>
          
-         <Curtains initialLoad = {initialLoad} initialToggle={initialToggle}/>
+         <Curtains initialLoad = {initialLoad} initialToggle={initialToggle} imageObject={imageObject}/>
 
          
 
@@ -54,7 +54,7 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
                     position: 'fixed',
                     zIndex: frogeStatus? 1:0,
             }}
-            src = {frog}
+            src = {imageObject.frog}
             />
     <img
             style={{
@@ -64,7 +64,7 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
                     position: 'fixed',
                     zIndex: frogeStatus? 0:1,
             }}
-            src = {noFrog}
+            src = {imageObject.noFrog}
             />
 
 
