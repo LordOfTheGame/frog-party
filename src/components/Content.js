@@ -8,15 +8,12 @@ import InitialOverlay from './InitialOverlay';
 
 
 
-
 const Content = ({frogeStatus, soundStatus, popupStatus, 
     changeStatus, changeSound, changePopup,
      initialToggle, initialLoad,
     
-    imageObject
+    imageObject, setLoaded
     }) => {
-
-
 
 
 
@@ -46,6 +43,7 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
 
     <Playsound soundStatus={soundStatus} frogeStatus = {frogeStatus} initialLoad = {initialLoad}/>
 
+        
     <img
             style={{
                 width: '100%',
@@ -54,7 +52,8 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
                     position: 'fixed',
                     zIndex: frogeStatus? 1:0,
             }}
-            src = {imageObject.frog}
+            src = {'stump-anim2.gif'}
+            onLoad = {setLoaded(true)}
             />
     <img
             style={{
@@ -64,7 +63,8 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
                     position: 'fixed',
                     zIndex: frogeStatus? 0:1,
             }}
-            src = {imageObject.noFrog}
+            src = {'stump.jpg'}
+            onLoad = {setLoaded(true)}
             />
 
 

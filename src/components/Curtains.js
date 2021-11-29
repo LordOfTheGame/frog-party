@@ -7,8 +7,10 @@ const Curtains = React.memo(({initialLoad, imageObject}) => {
     return (
         <div>
             
-            <LeftCurtain curtL={imageObject.curtL} initialLoad = {initialLoad}/>
-            <RightCurtain curtR = {imageObject.curtR} initialLoad = {initialLoad}/>
+            <LeftCurtain //curtL={imageObject.curtL} 
+            initialLoad = {initialLoad}/>
+            <RightCurtain //curtR = {imageObject.curtR} 
+            initialLoad = {initialLoad}/>
 
         </div>
     )

@@ -1,6 +1,5 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, Suspense} from 'react'
 import React from 'react'
-import Content from './components/Content'
 
 import './App.css'
 
@@ -13,8 +12,7 @@ import noFrog from './imgs/stump.jpg'
 import frog from './imgs/stump-anim2.gif'
 import curtR from './imgs/curtR.png'
 import curtL from './imgs/curtL.png'
-
-
+import Content from './components/Content';
 
 function App(){
 
@@ -32,26 +30,44 @@ const [popupStatus, setPopup] = useState(false);
 
 const [initialLoad, toggleInitialLoad] = useState(true);
 
-//image loading
-const [imagesLoaded, addImage] = useState(0);
 
-const imageAddition = () =>{
-  console.log("image load fired")
-  if(imagesLoaded < images.length){
+//image loading
+
+
+
+const [imagesLoaded, setLoaded] = useState(0);
+const [currentSource, setCurrentSource] = useState()
+
+function imageAddition(complete){
+
+  alert(complete);
+    console.log("image load fired")
   addImage(imagesLoaded+1)
+  console.log('number of images loaded: ',imagesLoaded);
+
 }
-}
+
 
 
 useEffect(()=>{
-
-    let img = new Image();
-    img.src=images[imagesLoaded];
-    console.log(img.src);
-    img.onload=imageAddition();
-    console.log('number of images loaded: ',imagesLoaded);
     
+    if (imagesLoaded < images.length-1){
 
+      let img = new Image();
+      
+      img.src=images[imagesLoaded];
+
+      if (img.complete){
+        addImage(imagesLoaded+1)
+        img.src=images[imagesLoaded];
+      }
+      img.onload=imageAddition(img.complete);
+
+      console.log(img.src);
+
+    } else {
+      return
+    }
 
 },[imagesLoaded])
 
@@ -78,7 +94,6 @@ const changePopup = () =>{
 }
 
 
-
 const initialToggle = () =>{
   toggleInitialLoad(false);
   setSound(true);
@@ -90,8 +105,10 @@ const initialToggle = () =>{
 
 
 return (
-  <div >
-    {imagesLoaded === images.length? <Content 
+  <div>
+    {imagesLoaded? <h1>Images have loaded successfully</h1> : <h1>Images are loading</h1> }
+    
+    <Content 
     soundStatus={soundStatus} 
     frogeStatus = {frogeStatus}
     popupStatus={popupStatus}
@@ -105,10 +122,10 @@ return (
 
     // Images
     
-    imageObject = {imageObject}
+    // imageObject = {imageObject}
+    setLoaded = {setLoaded}
 
-    />:
-    <h1>Images loaded: {imagesLoaded}</h1>}
+    />
     
   </div>
 )
