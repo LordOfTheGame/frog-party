@@ -64,6 +64,7 @@ useEffect(()=>{
 
 
   for (let image in imageObject ){
+    console.log(imageObject[image])
     imageLoadObject[image] = new Image();
     imageLoadObject[image].src = imageObject[image];
     console.log(imageLoadObject);
