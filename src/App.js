@@ -6,10 +6,12 @@ import './App.css'
 import Content from './components/Content';
 
 //Visual assets to preload
+
 import noFrog from './imgs/stump.jpg'
 import frog from './imgs/stump-anim2.gif'
 import curtR from './imgs/curtR.png'
 import curtL from './imgs/curtL.png'
+
 
 import Loadingscreen from './components/Loadingscreen';
 
@@ -46,7 +48,8 @@ const awaitLoading = (imageLoadObject, interval) =>{
   console.log("setinterval fired")
 
   for (let image in imageLoadObject ){
-    if (imageLoadObject[image].complete && loadedImages.includes(image) == false){
+    if (imageLoadObject[image].complete && loadedImages.includes(image) === false){
+      console.log(` ${image} has been loaded`)
       loadedImages.push(image);
     }
   }
@@ -60,13 +63,12 @@ useEffect(()=>{
   console.log("useffect fired")
 
 
-  images.forEach((image,index)=>{
+  for (let image in imageObject ){
+    imageLoadObject[image] = new Image();
+    imageLoadObject[image].src = imageObject[image];
+    console.log(imageLoadObject);
+  }
 
-    imageLoadObject[`img${index}`] = new Image();
-    imageLoadObject[`img${index}`].src = image;
-
-  })
-  
 
   const interval = setInterval(()=>{
     awaitLoading(imageLoadObject, interval)}
@@ -110,7 +112,7 @@ return (
   <div>
     <Loadingscreen imagesLoaded={imagesLoaded}/>
     
-    <Content 
+    {imageLoadObject?  <Content 
     soundStatus={soundStatus} 
     frogeStatus = {frogeStatus}
     popupStatus={popupStatus}
@@ -122,12 +124,13 @@ return (
     initialToggle = {initialToggle}   
     initialLoad = {initialLoad}
 
-    // Images
+    // Images 
     
     imageObject = {imageObject}
 
 
-    />
+    /> : null}
+   
     
   </div>
 )
