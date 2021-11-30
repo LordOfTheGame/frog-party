@@ -1,6 +1,5 @@
 import React from 'react'
 import {GoMute, GoUnmute} from 'react-icons/go'
-
 const Mutebtn = ({soundStatus, changeSound}) => {
 
 const clicked = () =>{
@@ -12,13 +11,25 @@ const clicked = () =>{
         
     if(soundStatus){
         return (
-            <button className="btn" onClick={clicked}>
+            <button style={{
+                border: 'none',
+                textDecoration: 'none',
+                backgroundColor:'cadetblue',
+                color: 'white',
+                fontSize: '16px',
+          }}  onClick={clicked}>
                  <GoUnmute size={28}/>   
             </button>
         )
     } else{
         return (
-            <button className = "btn" onClick={clicked}>
+            <button style={{
+                border: 'none',
+                textDecoration: 'none',
+                backgroundColor:'cadetblue',
+                color: 'white',
+                fontSize: '16px',
+          }}  onClick={clicked}>
                  <GoMute size={28}/>   
             </button>
         )

@@ -1,23 +1,27 @@
-import {useState, useEffect, Suspense} from 'react'
+import {useState, useEffect} from 'react'
 import React from 'react'
 
 import './App.css'
 
-
-import Sound from 'react-sound';
-import forestbgm from './audio/forest.mp3'
+import Content from './components/Content';
 
 //Visual assets to preload
 import noFrog from './imgs/stump.jpg'
 import frog from './imgs/stump-anim2.gif'
 import curtR from './imgs/curtR.png'
 import curtL from './imgs/curtL.png'
-import Content from './components/Content';
+
+import Loadingscreen from './components/Loadingscreen';
+
+
 
 function App(){
 
-//Image array
+//Image array and object
 const images = ['./imgs/stump.jpg', './imgs/stump-anim2.gif', './imgs/curtR.png', './imgs/curtL.png'];
+const imageLoadObject = {};
+const loadedImages = [];
+
 
 //Image Object
 const imageObject = {noFrog : noFrog, frog : frog, curtR: curtR, curtL : curtL}
@@ -28,49 +32,47 @@ const [soundStatus, setSound] = useState(false);
 const [popupStatus, setPopup] = useState(false);
 
 
+
 const [initialLoad, toggleInitialLoad] = useState(true);
 
 
 //image loading
 
+const [imagesLoaded, toggleLoad] = useState(false);
 
 
-const [imagesLoaded, setLoaded] = useState(0);
-const [currentSource, setCurrentSource] = useState()
+const awaitLoading = (imageLoadObject, interval) =>{
 
-function imageAddition(complete){
+  console.log("setinterval fired")
 
-  alert(complete);
-    console.log("image load fired")
-  addImage(imagesLoaded+1)
-  console.log('number of images loaded: ',imagesLoaded);
+  for (let image in imageLoadObject ){
+    if (imageLoadObject[image].complete && loadedImages.includes(image) == false){
+      loadedImages.push(image);
+    }
+  }
+  
+  if(loadedImages.length === images.length){toggleLoad(true); clearInterval(interval)}
 
 }
 
-
-
 useEffect(()=>{
+
+  console.log("useffect fired")
+
+
+  images.forEach((image,index)=>{
+
+    imageLoadObject[`img${index}`] = new Image();
+    imageLoadObject[`img${index}`].src = image;
+
+  })
+  
+
+  const interval = setInterval(()=>{
+    awaitLoading(imageLoadObject, interval)}
+    ,100);
     
-    if (imagesLoaded < images.length-1){
-
-      let img = new Image();
-      
-      img.src=images[imagesLoaded];
-
-      if (img.complete){
-        addImage(imagesLoaded+1)
-        img.src=images[imagesLoaded];
-      }
-      img.onload=imageAddition(img.complete);
-
-      console.log(img.src);
-
-    } else {
-      return
-    }
-
-},[imagesLoaded])
-
+},[])
 
 
 
@@ -106,7 +108,7 @@ const initialToggle = () =>{
 
 return (
   <div>
-    {imagesLoaded? <h1>Images have loaded successfully</h1> : <h1>Images are loading</h1> }
+    <Loadingscreen imagesLoaded={imagesLoaded}/>
     
     <Content 
     soundStatus={soundStatus} 
@@ -122,8 +124,8 @@ return (
 
     // Images
     
-    // imageObject = {imageObject}
-    setLoaded = {setLoaded}
+    imageObject = {imageObject}
+
 
     />
     

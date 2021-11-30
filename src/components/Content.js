@@ -12,7 +12,7 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
     changeStatus, changeSound, changePopup,
      initialToggle, initialLoad,
     
-    imageObject, setLoaded
+    imageObject
     }) => {
 
 
@@ -52,8 +52,8 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
                     position: 'fixed',
                     zIndex: frogeStatus? 1:0,
             }}
-            src = {'stump-anim2.gif'}
-            onLoad = {setLoaded(true)}
+            src = {imageObject.frog}
+            
             />
     <img
             style={{
@@ -63,8 +63,8 @@ const Content = ({frogeStatus, soundStatus, popupStatus,
                     position: 'fixed',
                     zIndex: frogeStatus? 0:1,
             }}
-            src = {'stump.jpg'}
-            onLoad = {setLoaded(true)}
+            src = {imageObject.noFrog}
+        
             />
 
 

@@ -37,7 +37,8 @@ const Buttons = ({changeSound,
             ...styles}}>
 
             
-            <button className="btn" onClick={setPopup}>
+            <button className="btn"
+            onClick={setPopup}>
             Show credits
             </button>
 
